@@ -1,0 +1,24 @@
+
+body {
+	padding: 40px;
+}
+
+body, p { font-size: 24px; }
+
+.animal-card {
+	background-color: #b3d4fc;
+	border: 2px solid rgb(83, 118, 129);
+	padding: 1rem;
+}
+
+.show-animal {
+	background-color: rgb(51, 66, 51);
+	height: 2rem;
+	width: 6rem;
+	margin: 2rem;
+	color: white;
+}
+
+.hide {
+	display: none;
+}
