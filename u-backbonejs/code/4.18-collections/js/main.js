@@ -26,6 +26,7 @@ var songsCollection2 = new Songs([
   new Song({ title: "Song 2.5", genre: "pop" }),
   new Song({ title: "Song 2.6", genre: "funk" }),
   new Song({ title: "Song 2.7", genre: "disco" }),
+  new Song({ title: "Song 2.8", genre: "showtune" }),
 ]);
 
 var jazzSongs = songsCollection2.filter(function (song) {
