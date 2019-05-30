@@ -1,4 +1,8 @@
-var Song = Backbone.Model.extend();
+const API_BASE_URL = "http://localhost:3000"
+
+var Song = Backbone.Model.extend({
+  url: API_BASE_URL + '/subregions'
+});
 
 var Songs = Backbone.Collection.extend({
   model: Song
@@ -41,9 +45,17 @@ var popSongs = songsCollection2.filter(function (song) {
   return song.get("genre") == "pop"
 })
 
+var mySong = new Song({ title: "Mini Pop", year: 1945, artist: "Pee Wee" })
 
 var categories = new SongCategory([
 ]);
 categories.add(jazzSongs)
 categories.add(salsaSongs)
 categories.add(popSongs)
+
+var subregions = mySong.fetch({
+  success: function (response) {
+    console.log(response.attributes.data[4].attributes.name.toLowerCase().split(" ")[3].toUpperCase());
+  }
+});
+
