@@ -1,0 +1,14 @@
+
+body {
+	padding: 40px;
+}
+
+body, p { font-size: 24px; }
+
+.go-blue {
+	background-color: lightblue;
+}
+
+.go-yellow {
+	background-color: yellow;
+}
