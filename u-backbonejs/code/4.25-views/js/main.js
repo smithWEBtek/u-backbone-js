@@ -1,30 +1,39 @@
+var Song = Backbone.Model.extend();
 
 var SongView = Backbone.View.extend({
+  tagName: "li",
+
   render: function () {
-    this.$el.html("Hellow WOrld");
-    listenForYellowButton();
+    this.$el.html(this.model.get("title"));
     return this;
-  },
-  turnBlue: function () {
-    this.$el.addClass("go-blue");
-    return this;
-  },
-  turnYellow: function () {
-    this.$el.addClass("go-yellow")
-    return this;
+  }
+});
+
+var Songs = Backbone.Collection.extend({
+  model: Song
+})
+
+var SongsView = Backbone.View.extend({
+  render: function () {
+    var self = this;
+    this.model.each(function (song) {
+      var songView = new SongView({ model: song });
+      self.$el.append(songView.render().$el);
+    })
   }
 })
 
-var songView = new SongView({
-  el: "#container"
-});
 
+var song = new Song({ title: "Blue in Green" });
+var songView = new SongView({ el: "#container", model: song });
 songView.render();
-songView.turnBlue();
 
-function listenForYellowButton() {
-  $('button#yellow-button').on('click', function (event) {
-    event.preventDefault()
-    songView.turnYellow()
-  })
-}
+
+var songs = new Songs([
+  new Song({ title: "The Alley Cat" }),
+  new Song({ title: "Tuxedo Junction" }),
+  new Song({ title: "Blue Skies" })
+])
+
+var songsView = new SongsView({ el: "#songs", model: songs });
+songsView.render();
